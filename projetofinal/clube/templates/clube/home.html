@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block titulo %}
+            Treinos
+        {% endblock %}
+    </title>
+</head>
+
+<header>
+    <div class="container">
+        <div class="user-info">
+            <p>Bem vindo ao Clube Nacional de Ginástica {{ user.username }}</p>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'clube:fazerlogout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'clube:fazerlogin' %}">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<body>
+
+
+{% if request.user.is_authenticated %}
+    <h2>O user {{ request.user.username }} está logado</h2>
+{% else %}
+    <h2>Não está logado...</h2>
+{% endif %}
+
+</form>
+</body>
+</html>
