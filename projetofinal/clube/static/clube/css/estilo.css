@@ -1,0 +1,34 @@
+.user-info {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background-color: #44081A;
+}
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #550A21;
+}
+
+li.nav-left {
+    float: left
+}
+
+li.nav-right {
+    float: right;
+}
+
+li a {
+    display: block;
+    padding: 15px 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+li a:hover {
+    background-color: #773B4D;
+}
