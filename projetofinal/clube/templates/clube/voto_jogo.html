@@ -1,0 +1,14 @@
+{% block content %}
+  <h2>{{ jogo.local }} em {{ jogo.data }} às {{ jogo.hora }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% if voto %}
+      <input type="radio" name="vai_ao_jogo" value="True" {% if voto.vai_ao_jogo %}checked{% endif %}> Vou ao jogo<br>
+      <input type="radio" name="vai_ao_jogo" value="False" {% if not voto.vai_ao_jogo %}checked{% endif %}> Não vou ao jogo<br>
+    {% else %}
+      <input type="radio" name="vai_ao_jogo" value="True"> Vou ao jogo<br>
+      <input type="radio" name="vai_ao_jogo" value="False"> Não vou ao jogo<br>
+    {% endif %}
+    <input type="submit" value="Votar">
+  </form>
+{% endblock %}
