@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import context
 from django.urls import reverse
-from .models import Atleta, Jogo, Voto_jogo
+from .models import Atleta, Jogo
 
 
 def home(request):
@@ -108,32 +108,13 @@ def criar_jogo(request):
 
 @login_required
 def jogos(request):
-    jogos_criados = Jogo.objects.filter(criador=request.user)
-    jogos_participantes = request.user.jogos.all()
-    jogador_vai_jogar = {}
-    for jogo in jogos_participantes:
-        votacao = Voto_jogo.objects.filter(jogador=request.user, jogo=jogo).first()
-        if votacao:
-            jogador_vai_jogar[jogo.id] = votacao.vai_jogar
-        else:
-            jogador_vai_jogar[jogo.id] = None
-    return render(request, 'clube/jogo.html', {'jogos_criados': jogos_criados, 'jogos_participantes': jogos_participantes, 'jogador_vai_jogar': jogador_vai_jogar})
+    jogos_criados = Jogo.objects.filter()
+    context = {'jogos_criados': jogos_criados}
+    return render(request, 'clube/home.html', context)
 
 @login_required
-def voto_jogo(request, jogo_id):
+def detalhe_jogo(request, jogo_id):
     jogo = get_object_or_404(Jogo, id=jogo_id)
-    voto = Voto_jogo.objects.filter(user=request.user, jogo=jogo).first()
+    context = {'jogo': jogo}
+    return render(request, 'clube/detalhe.html', context)
 
-    if request.method == 'POST':
-        vai_ao_jogo = request.POST.get('vai_ao_jogo') == 'True'
-
-        if voto:
-            voto.vai_ao_jogo = vai_ao_jogo
-            voto.save()
-        else:
-            voto = Voto_jogo(user=request.user, jogo=jogo, vai_ao_jogo=vai_ao_jogo)
-            voto.save()
-
-        return HttpResponseRedirect(reverse('clube:home'))
-
-    return render(request, 'clube/voto_jogo.html', {'jogo': jogo, 'voto': voto})

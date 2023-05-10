@@ -3,9 +3,13 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 
-
+class Utilizador(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    equipa = models.CharField(max_length=50)
+    num_tel = models.IntegerField(unique=True)
+    data_nascimento = models.DateField()
+    sexo = models.CharField(max_length=10)
 class Atleta(models.Model):
-
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     equipa = models.CharField(max_length=50)
     num_tel = models.IntegerField(unique=True)
@@ -15,7 +19,6 @@ class Atleta(models.Model):
 
     def __str__(self):
         return self.user.username
-
 
 class Treinador(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -40,13 +43,8 @@ class Opcao_treino(models.Model):
 
 
 class Jogo(models.Model):
-    data = models.DateField('data')
-    hora = models.TimeField()
-    local = models.CharField(max_length=200)
-    jogadores = models.ManyToManyField(User, through='Voto_jogo')
+    jogo_data = models.DateField('data')
+    jogo_hora = models.TimeField()
+    jogo_local = models.CharField(max_length=200)
 
 
-class Voto_jogo(models.Model):
-    jogador = models.ForeignKey(User, on_delete=models.CASCADE)
-    jogo = models.ForeignKey(Jogo, on_delete=models.CASCADE)
-    vai_jogar = models.BooleanField()

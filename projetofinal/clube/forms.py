@@ -46,8 +46,8 @@ class DiretorForm(forms.ModelForm):
 class JogoForm(forms.ModelForm):
     class Meta:
         model = Jogo
-        fields = ['local', 'data', 'hora']
+        fields = ['jogo_local', 'jogo_data', 'jogo_hora']
         widgets = {
-            'data': forms.DateInput(attrs={'type': 'date'}),
-            'hora': forms.TimeInput(attrs={'type': 'time'}),
+            'jogo_data': forms.DateInput(attrs={'type': 'date'}),
+            'jogo_hora': forms.TimeInput(attrs={'type': 'time'}),
         }

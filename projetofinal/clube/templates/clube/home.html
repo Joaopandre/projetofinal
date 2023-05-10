@@ -31,7 +31,7 @@
         <li class="nav-left"><a href="{% url 'clube:home' %}">Home</a></li>
         {% if request.user.is_authenticated %}
             <li class="nav-left"><a href="{% url 'clube:historia' %}">História do clube</a></li>
-            <li class="nav-left"><a href="{% if jogo.id %}{% url 'clube:voto_jogo' jogo.id %}{% endif %}">Jogos</a></li>
+            <li class="nav-left"><a href="{% url 'clube:jogos' %}">Jogos</a></li>
             <li class="nav-left"><a href="{% url 'clube:criar_jogo' %}">Criar Jogos</a></li>
             <li class="nav-left"><a href="{% url 'clube:home' %}">Treinos</a></li>
             <li class="nav-right"><a href="{% url 'clube:home' %}">Perfil</a></li>
@@ -60,6 +60,24 @@
             <h2>Não está logado...</h2>
         {% endif %}
     {% endblock %}
+
+
+{% if jogos_criados %}
+    <h2>Jogos criados por {{ request.user.username }}:</h2>
+    <ul>
+        {% for jogo in jogos_criados %}
+            <li>
+                <a href="{% url 'clube:detalhe_jogo' jogo.id %}">{{ jogo.jogo_data }} {{ jogo.jogo_hora }} - {{ jogo.jogo_local }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Você ainda não criou nenhum jogo.</p>
+{% endif %}
+
+
+
+
 
 </body>
 

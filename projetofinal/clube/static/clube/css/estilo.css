@@ -39,7 +39,7 @@ li a {
     text-align: center;
 }
 
-li a:hover, d.dropdown:hover .dropa {
+li a:hover, .dropdown:hover .dropa {
     background-color: #773B4D;
 }
 
