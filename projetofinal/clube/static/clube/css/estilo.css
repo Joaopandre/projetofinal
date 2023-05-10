@@ -1,0 +1,102 @@
+body {
+    background-color: rgba(119, 59, 77, 0.72);
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial;
+    padding-bottom: 30px;
+}
+
+.user-info {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background-color: #44081A;
+    background-image: url("../imagens/CNGLogo.png");
+}
+
+.nav {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #550A21;
+}
+
+li.nav-left {
+    float: left;
+}
+
+li.nav-right {
+    float: right;
+}
+
+li a {
+    display: block;
+    padding: 15px 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+li a:hover, d.dropdown:hover .dropa {
+    background-color: #773B4D;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropa {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #773B4D;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgb(68, 8, 26);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  border: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+footer {
+    background-color: #44081A;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+#hist {
+    text-align: center;
+    margin: 50px;
+
+}
+

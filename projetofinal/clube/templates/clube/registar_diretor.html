@@ -1,0 +1,10 @@
+{% extends 'clube/home.html' %}
+{% block titulo %}Diretor{% endblock %}
+{% block conteudo %}
+    <h2>Página de Registo de Treinador</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registar</button>
+    </form>
+{% endblock %}
