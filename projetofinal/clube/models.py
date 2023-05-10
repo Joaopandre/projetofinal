@@ -31,10 +31,9 @@ class Diretor(models.Model):
 
 
 class Treino(models.Model):
-    local_treino = models.CharField(max_length=50)
-    data_treino = models.DateTimeField('Data de Treino: ')
-
-
+    treino_data = models.DateField(default=False)
+    treino_hora = models.TimeField(default=False)
+    treino_local = models.CharField(max_length=200)
 
 class Opcao_treino(models.Model):
     treino = models.ForeignKey(Treino, on_delete=models.CASCADE)
@@ -48,3 +47,12 @@ class Jogo(models.Model):
     jogo_local = models.CharField(max_length=200)
 
 
+class Voto_jogo(models.Model):
+    jogador = models.ForeignKey(User, on_delete=models.CASCADE)
+    jogo = models.ForeignKey(Jogo, on_delete=models.CASCADE)
+    vai_jogar = models.BooleanField()
+
+class Voto_treino(models.Model):
+    jogador = models.ForeignKey(User, on_delete=models.CASCADE)
+    jogo = models.ForeignKey(Jogo, on_delete=models.CASCADE)
+    vai_jogar = models.BooleanField()

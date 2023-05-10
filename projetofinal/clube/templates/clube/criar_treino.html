@@ -1,0 +1,10 @@
+{% extends 'clube/home.html' %}
+{% block titulo %}Criar Treino{% endblock %}
+{% block conteudo %}
+  <h2>Criar Treino</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Criar</button>
+  </form>
+{% endblock %}

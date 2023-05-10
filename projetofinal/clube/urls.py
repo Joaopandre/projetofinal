@@ -17,7 +17,9 @@ urlpatterns = [
     path('criar_jogo/', views.criar_jogo, name='criar_jogo'),
     path('<int:jogo_id>/', views.detalhe_jogo, name='detalhe_jogo'),
 
-
+    path('treinos/', views.treinos, name='treinos'),
+    path('criar_treino/', views.criar_treino, name='criar_treino'),
+    path('<int:treino_id>/', views.detalhe_treino, name='detalhe_treino'),
 
     path('fazerlogin', views.fazerlogin, name='fazerlogin'),
     path('fazerlogout', views.fazerlogout, name='fazerlogout'),

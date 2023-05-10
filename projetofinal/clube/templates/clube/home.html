@@ -33,7 +33,8 @@
             <li class="nav-left"><a href="{% url 'clube:historia' %}">História do clube</a></li>
             <li class="nav-left"><a href="{% url 'clube:jogos' %}">Jogos</a></li>
             <li class="nav-left"><a href="{% url 'clube:criar_jogo' %}">Criar Jogos</a></li>
-            <li class="nav-left"><a href="{% url 'clube:home' %}">Treinos</a></li>
+            <li class="nav-left"><a href="{% url 'clube:criar_treino' %}">Criar Treinos</a></li>
+            <li class="nav-left"><a href="{% url 'clube:treinos' %}">Treinos</a></li>
             <li class="nav-right"><a href="{% url 'clube:home' %}">Perfil</a></li>
             <li class="nav-right"><a href="{% url 'clube:fazerlogout' %}">Logout</a></li>
         {% else %}
@@ -71,17 +72,24 @@
             </li>
         {% endfor %}
     </ul>
-{% else %}
-    <p>Você ainda não criou nenhum jogo.</p>
 {% endif %}
 
 
-
+{% if treinos_criados %}
+    <h2>Treinos criados por {{ request.user.username }}:</h2>
+    <ul>
+        {% for treino in treinos_criados %}
+            <li>
+                <a href="{% url 'clube:detalhe_jogo' treino.id %}">{{ treino.treino_data }} {{ treino.treino_hora }} - {{ treino.treino_local }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 
 </body>
 
 <footer>
-    <div id=""><h3>lalala</h3></div>
+    <div id=""><h3><a href="{% url 'clube:home' %}">Contactos</a></h3></div>
 </footer>
 </html>

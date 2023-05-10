@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Atleta, Jogo
+from .models import User, Atleta, Jogo, Treino
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -50,4 +50,13 @@ class JogoForm(forms.ModelForm):
         widgets = {
             'jogo_data': forms.DateInput(attrs={'type': 'date'}),
             'jogo_hora': forms.TimeInput(attrs={'type': 'time'}),
+        }
+
+class TreinoForm(forms.ModelForm):
+    class Meta:
+        model = Treino
+        fields = ['treino_local', 'treino_data', 'treino_hora']
+        widgets = {
+            'treino_data': forms.DateInput(attrs={'type': 'date'}),
+            'treino_hora': forms.TimeInput(attrs={'type': 'time'}),
         }

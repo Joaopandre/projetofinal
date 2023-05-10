@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes do Jogo</title>
+    <title>Detalhes do Treino</title>
 </head>
+
 <body>
-    <h1>{{ jogo.jogo_data }} {{ jogo.jogo_hora }} - {{ jogo.jogo_local }}</h1>
+    <h1>{{ treino.treino_data }} {{ treino.treino_hora }} - {{ treino.treino_local }}</h1>
     <p>Jogadores:</p>
     <ul>
-        {% for jogador in jogo.jogadores.all %}
+        {% for treino in treino.jogadores.all %}
             <li>{{ jogador.username }}</li>
         {% endfor %}
     </ul>
+
 </body>
 </html>

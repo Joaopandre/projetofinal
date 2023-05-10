@@ -1,12 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import CustomUserCreationForm, AtletaForm, TreinadorForm, DiretorForm, JogoForm
+from .forms import CustomUserCreationForm, AtletaForm, TreinadorForm, DiretorForm, JogoForm, TreinoForm
 from django.core.checks import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import context
 from django.urls import reverse
-from .models import Atleta, Jogo
+from .models import Atleta, Jogo, Treino
 
 
 def home(request):
@@ -84,7 +84,7 @@ def registar_diretor(request):
         if form.is_valid():
             diretor = form.save()
             login(request, diretor)
-            return redirect('clube:criar_jogo')
+            return redirect('clube:home')
     else:
         form = DiretorForm()
     return render(request, 'clube/registar_diretor.html', {'form': form})
@@ -116,5 +116,29 @@ def jogos(request):
 def detalhe_jogo(request, jogo_id):
     jogo = get_object_or_404(Jogo, id=jogo_id)
     context = {'jogo': jogo}
-    return render(request, 'clube/detalhe.html', context)
+    return render(request, 'clube/detalhe_jogo.html', context)
 
+@login_required
+def treinos(request):
+    treinos_criados = Treino.objects.filter()
+    context = {'treinos_criados': treinos_criados}
+    return render(request, 'clube/home.html', context)
+
+@login_required
+def detalhe_treino(request, treino_id):
+    treino = get_object_or_404(Treino, id=treino_id)
+    context = {'treino': treino}
+    return render(request, 'clube/detalhe_treino.html', context)
+@login_required
+def criar_treino(request):
+    if request.method == 'POST':
+        form = TreinoForm(request.POST)
+        if form.is_valid():
+            treino = form.save(commit=False)
+            treino.criador = request.user
+            treino.save()
+            form.save_m2m()
+            return redirect('clube:home')
+    else:
+        form = TreinoForm()
+    return render(request, 'clube/criar_treino.html', {'form': form})

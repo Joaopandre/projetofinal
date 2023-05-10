@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Jogo</title>
+</head>
+<body>
+    <h1>{{ jogo.jogo_data }} {{ jogo.jogo_hora }} - {{ jogo.jogo_local }}</h1>
+    <p>Jogadores:</p>
+    <ul>
+        {% for jogador in jogo.jogadores.all %}
+            <li>{{ jogador.username }}</li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>
