@@ -1,22 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>História do CNG</title>
-     <h2>História do CNG</h2>
-</head>
+{% extends 'clube/home.html' %}
+{% block titulo %}História do Clube{% endblock %}
+
+{% block conteudo %}
 <body>
-
-<p> A 5 de Junho de 1950 lavrou-se a escritura do nascimento do CNG. E como surgiu esta designação? O nome não foi pacífico. Foram necessárias várias reuniões e filtrar os nomes propostos, alguns bem deslocados ou talvez não. Até o nome de “Adamastor” foi sugerido. De qualquer modo foi votado o de “Clube Nacional de Ginástica”, ideia feliz e cuja autoria foi de Guilherme Guedes, futuro primeiro Presidente da Direção e pessoa muito ligada a atividades desportivas, sobretudo no campo da Ginástica. Em simultâneo foi desenhado o emblema do Clube, símbolo que mereceu o maior cuidado e cuja paternidade pertenceu a Nuno de Barros, a Manuel dos Santos Franco e a João Abreu, pessoas a quem o Clube muito veio a dever no campo desportivo, competitivo e administrativo. Depois foi o normal nestas circunstâncias: a procura de uma Sede condigna, onde se pudesse ter um recanto de leitura, uma sala de reuniões, um local onde fosse possível jogar um bridge e, sobretudo, um espaço para a prática desportiva que, desde o primeiro momento seriam o Voleibol e a Ginástica, independentemente de outras que viessem a captar interessados, como o Ténis e o popular “Pingue-pongue”. Esse local foi encontrado e veio a situar-se na Av. Da República, na Vila Moita, tendo-se mantido como Sede desde a fundação, até ao ano de 1997.
-Simultaneamente houve que elaborar estatutos, definir as cores dos equipamentos desportivos, enfim, de pôr em marcha toda uma estrutura minimamente consistente. Claro que houve problemas, discussões e zangas, abandonos, mas o Clube resistiu porque o sonho comanda a vida, como diz o Poeta e porque houve pessoas determinadas, prontas a sacrificar-se para que o seu ideal triunfasse. Seria justo mencionar algumas, mas o receio de ser injusto com outras leva-nos a preferir elaborar uma lista, o mais completa que nos foi possível, crê-se mesmo que sem falhas significativas, de todos aqueles que passara ao longo dos anos pelos Órgãos Sociais do Clube e que, dentro das suas possibilidades, o consolidaram, vitalizaram e o transformaram de um pequeno Grupo, num Clube de razoável dimensão, com objetivos bem definidos, vivendo para a prática do desporto, virado com especial relance para a formação de jovens.
-Por outro lado, foi considerada como importante a existência de uma componente cultural. O objetivo seria, e é, a formação e captação dos espíritos mais sensíveis, o que, é justo dizê-lo, não tem sido fácil. O facto de recusar a prática do futebol, e antes enveredar por modalidades à data da sua fundação pouco desenvolvidas, fez nascer uma certa noção de elitismo. Hoje dir-se-á, e com razão, que há cinquenta anos, o Grupo Fundador do C.N.G. estava avançado em relação ao seu tempo. Existirão muitas modalidades tão espetaculares como o Vólei? A Ginástica não é considerada a modalidade mãe de todas as outras? E não são o Ténis de Mesa, a Natação, o Ténis, as diversas disciplinas de Artes Marciais, o Futebol de Salão e outras, nos nossos dias, acessíveis a todos e de gosto bem popular? E a cultura, nas suas diversas vertentes, sejam leitura, cinema, exposições, jogos de xadrez ou bridge, não deve ser promovida, de modo a beneficiar todos?
-O C.N.G. respeitou sempre as coletividades mais antigas, mas obteve o seu próprio espaço na Parede, sem ferir suscetibilidades e sem atropelar ninguém.
-O desenvolvimento do C.N.G. foi, como era natural, lento, difícil, por vezes penoso, com dificuldades financeiras imensas; por vezes foi necessária a boa vontade dos sócios mais abonados para satisfação de compromissos inadiáveis. Mas tudo foi vencido com determinação, com autoridade democrática e grande dedicação ao Clube. Todas as crises foram suplantadas, mesmo a que se abateu em 1974/1975, período em que o C.N.G. se transformou em sede de grandes debates políticos que originaram cisões graves, rompimentos tempestuosos e que só o tempo terá feito esquecer em parte. A vivência desse tempo dentro o Clube foi, afinal o reflexo da sociedade portuguesa da época e, embora tivessem ficado feridas, é firme convicção de que, se foram excedidos alguns limites eles foram posteriormente eliminados e considerados como próprios de um longo período de abafamento de expressão. Hoje o Clube vive em perfeita normalidade democrática, aliás como toda a sociedade portuguesa. O nosso Clube é um perfeito reflexo de um Portugal com desigualdades e com injustiças, é verdade, mas cheio de generosidade, de amplas liberdades, com uma juventude cheia de potencialidades onde o impossível não tem cabimento. Deixem-nos sonhar e afirmar que uma muito pequenas parcela da formação desta juventude cheia de potencialidades onde o impossível não tem cabimento. Deixem-nos sonhar e afirmar que uma muito pequena parcela da formação desta juventude viva pertence ao C.N.G e, por arrastamento, a todos aqueles que, em 1950, o fundaram.
-Muito se ficou a dever nos primeiros tempos ao Presidente Estevão Carrasco, pelo vigor ue soube imprimir à nova coletividade e, mais tarde, ao Presidente Branco Martins que dedicando-se, de alma e coração, ao Clube e aliando uma postura de autoridade e honestidade com uma formação humanista, conduziu o C.N.G. a uma posição de relevo na comunidade da Parede.
-Logo após a crise, em muitos sentidos libertadora, de 1974/1975, o C.N.G. recomeçou as suas atividades com grande empenho, mas demasiado fragilizado tanto no aspeto financeiro, como humano. Foram necessários vários anos para retomar a sua proverbial vitalidade, a qual terá sido alcançada sob a presidência de Júlio Correia.
-Entretanto o Clube, devido ao esforço e dedicação do sócio fundador Júlio Botelho Moniz, obteve a permissão para primeiro utilizar e depois possuir as instalações do Rádio Clube Português. Este facto proporcionou ao C.N.G. a posse de um excelente espaço para as práticas desportivas e de lazer, espaço este que tem sido constantemente melhorado, em boa parte devido à gestão de diversas Direções, sempre presididas por Manuel Madeira, outro sócio a quem o Clube muito fica a dever. <p>
-
-<li class="nav-left"><a href="{% url 'clube:home' %}">Home</a></li>
+<div id="hist">
+    <p> A 5 de Junho de 1950 lavrou-se a escritura do nascimento do CNG. E como surgiu esta designação? O nome não foi
+        pacífico. Foram necessárias várias reuniões e filtrar os nomes propostos, alguns bem deslocados ou talvez não.
+        Até o
+        nome de “Adamastor” foi sugerido. De qualquer modo foi votado o de “Clube Nacional de Ginástica”, ideia feliz e
+        cuja
+        autoria foi de Guilherme Guedes, futuro primeiro Presidente da Direção e pessoa muito ligada a atividades
+        desportivas, sobretudo no campo da Ginástica. Em simultâneo foi desenhado o emblema do Clube, símbolo que
+        mereceu o
+        maior cuidado e cuja paternidade pertenceu a Nuno de Barros, a Manuel dos Santos Franco e a João Abreu, pessoas
+        a
+        quem o Clube muito veio a dever no campo desportivo, competitivo e administrativo. Depois foi o normal nestas
+        circunstâncias: a procura de uma Sede condigna, onde se pudesse ter um recanto de leitura, uma sala de reuniões,
+        um
+        local onde fosse possível jogar um bridge e, sobretudo, um espaço para a prática desportiva que, desde o
+        primeiro
+        momento seriam o Voleibol e a Ginástica, independentemente de outras que viessem a captar interessados, como o
+        Ténis
+        e o popular “Pingue-pongue”. Esse local foi encontrado e veio a situar-se na Av. Da República, na Vila Moita,
+        tendo-se mantido como Sede desde a fundação, até ao ano de 1997.
+        Simultaneamente houve que elaborar estatutos, definir as cores dos equipamentos desportivos, enfim, de pôr em
+        marcha
+        toda uma estrutura minimamente consistente. Claro que houve problemas, discussões e zangas, abandonos, mas o
+        Clube
+        resistiu porque o sonho comanda a vida, como diz o Poeta e porque houve pessoas determinadas, prontas a
+        sacrificar-se para que o seu ideal triunfasse. Seria justo mencionar algumas, mas o receio de ser injusto com
+        outras
+        leva-nos a preferir elaborar uma lista, o mais completa que nos foi possível, crê-se mesmo que sem falhas
+        significativas, de todos aqueles que passara ao longo dos anos pelos Órgãos Sociais do Clube e que, dentro das
+        suas
+        possibilidades, o consolidaram, vitalizaram e o transformaram de um pequeno Grupo, num Clube de razoável
+        dimensão,
+        com objetivos bem definidos, vivendo para a prática do desporto, virado com especial relance para a formação de
+        jovens.
+        Por outro lado, foi considerada como importante a existência de uma componente cultural. O objetivo seria, e é,
+        a
+        formação e captação dos espíritos mais sensíveis, o que, é justo dizê-lo, não tem sido fácil. O facto de recusar
+        a
+        prática do futebol, e antes enveredar por modalidades à data da sua fundação pouco desenvolvidas, fez nascer uma
+        certa noção de elitismo. Hoje dir-se-á, e com razão, que há cinquenta anos, o Grupo Fundador do C.N.G. estava
+        avançado em relação ao seu tempo. Existirão muitas modalidades tão espetaculares como o Vólei? A Ginástica não é
+        considerada a modalidade mãe de todas as outras? E não são o Ténis de Mesa, a Natação, o Ténis, as diversas
+        disciplinas de Artes Marciais, o Futebol de Salão e outras, nos nossos dias, acessíveis a todos e de gosto bem
+        popular? E a cultura, nas suas diversas vertentes, sejam leitura, cinema, exposições, jogos de xadrez ou bridge,
+        não
+        deve ser promovida, de modo a beneficiar todos?
+        O C.N.G. respeitou sempre as coletividades mais antigas, mas obteve o seu próprio espaço na Parede, sem ferir
+        suscetibilidades e sem atropelar ninguém.
+        O desenvolvimento do C.N.G. foi, como era natural, lento, difícil, por vezes penoso, com dificuldades
+        financeiras
+        imensas; por vezes foi necessária a boa vontade dos sócios mais abonados para satisfação de compromissos
+        inadiáveis.
+        Mas tudo foi vencido com determinação, com autoridade democrática e grande dedicação ao Clube. Todas as crises
+        foram
+        suplantadas, mesmo a que se abateu em 1974/1975, período em que o C.N.G. se transformou em sede de grandes
+        debates
+        políticos que originaram cisões graves, rompimentos tempestuosos e que só o tempo terá feito esquecer em parte.
+        A
+        vivência desse tempo dentro o Clube foi, afinal o reflexo da sociedade portuguesa da época e, embora tivessem
+        ficado
+        feridas, é firme convicção de que, se foram excedidos alguns limites eles foram posteriormente eliminados e
+        considerados como próprios de um longo período de abafamento de expressão. Hoje o Clube vive em perfeita
+        normalidade
+        democrática, aliás como toda a sociedade portuguesa. O nosso Clube é um perfeito reflexo de um Portugal com
+        desigualdades e com injustiças, é verdade, mas cheio de generosidade, de amplas liberdades, com uma juventude
+        cheia
+        de potencialidades onde o impossível não tem cabimento. Deixem-nos sonhar e afirmar que uma muito pequenas
+        parcela
+        da formação desta juventude cheia de potencialidades onde o impossível não tem cabimento. Deixem-nos sonhar e
+        afirmar que uma muito pequena parcela da formação desta juventude viva pertence ao C.N.G e, por arrastamento, a
+        todos aqueles que, em 1950, o fundaram.
+        Muito se ficou a dever nos primeiros tempos ao Presidente Estevão Carrasco, pelo vigor ue soube imprimir à nova
+        coletividade e, mais tarde, ao Presidente Branco Martins que dedicando-se, de alma e coração, ao Clube e aliando
+        uma
+        postura de autoridade e honestidade com uma formação humanista, conduziu o C.N.G. a uma posição de relevo na
+        comunidade da Parede.
+        Logo após a crise, em muitos sentidos libertadora, de 1974/1975, o C.N.G. recomeçou as suas atividades com
+        grande
+        empenho, mas demasiado fragilizado tanto no aspeto financeiro, como humano. Foram necessários vários anos para
+        retomar a sua proverbial vitalidade, a qual terá sido alcançada sob a presidência de Júlio Correia.
+        Entretanto o Clube, devido ao esforço e dedicação do sócio fundador Júlio Botelho Moniz, obteve a permissão para
+        primeiro utilizar e depois possuir as instalações do Rádio Clube Português. Este facto proporcionou ao C.N.G. a
+        posse de um excelente espaço para as práticas desportivas e de lazer, espaço este que tem sido constantemente
+        melhorado, em boa parte devido à gestão de diversas Direções, sempre presididas por Manuel Madeira, outro sócio
+        a
+        quem o Clube muito fica a dever.
+    <p>
+</div>
 
 </body>
-</html>
+{% endblock %}

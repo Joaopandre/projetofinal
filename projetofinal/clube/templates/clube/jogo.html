@@ -11,7 +11,7 @@
   <h3>Participando</h3>
   <ul>
     {% for jogo in jogos_participantes %}
-      <li>{{ jogo.data }} - {{ jogo.hora }} - {{ jogo.local }} - {% if jogador_vai_jogar[jogo.id] is not None %}{% if jogador_vai_jogar[jogo.id] %}Vai jogar{% else %}Não vai jogar{% endif %}{% endif %}</li>
+      <li>{{ jogo.data }} - {{ jogo.hora }} - {{ jogo.local }} - {% if jogador_vai_jogar.[jogo.id] is not None %}{% if jogador_vai_jogar.[jogo.id] %}Vai jogar{% else %}Não vai jogar{% endif %}{% endif %}</li>
     {% empty %}
       <li>Você não está participando de nenhum jogo</li>
     {% endfor %}

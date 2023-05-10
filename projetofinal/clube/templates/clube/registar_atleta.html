@@ -1,10 +1,16 @@
- <h2>Página de Registo de Atleta</h2>
+{% extends 'clube/home.html' %}
+{% block titulo %}Atletas{% endblock %}
+
+
+{% block conteudo %}
+<h2>Página de Registo de Atleta</h2>
     <form method="POST">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ atleta_form.as_p }}
-    <button type="submit">Registar Atleta</button>
-</form>
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ atleta_form.as_p }}
+        <button type="submit">Registar Atleta</button>
+    </form>
 
     <li><a href="{% url 'clube:home' %}">Home</a></li>
+{% endblock %}
 

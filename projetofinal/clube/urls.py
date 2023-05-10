@@ -13,6 +13,7 @@ urlpatterns = [
 
     path('historia/', views.historia, name='historia'),
 
+    path('jogos/', views.jogos, name='jogos'),
     path('criar_jogo/', views.criar_jogo, name='criar_jogo'),
     path('voto_jogo/<int:jogo_id>/', views.voto_jogo, name='voto_jogo'),
 

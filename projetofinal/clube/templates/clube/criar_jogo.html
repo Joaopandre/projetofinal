@@ -1,4 +1,6 @@
-{% block content %}
+{% extends 'clube/home.html' %}
+{% block titulo %}Criar Jogo{% endblock %}
+{% block conteudo %}
   <h2>Criar jogo</h2>
   <form method="post">
     {% csrf_token %}
