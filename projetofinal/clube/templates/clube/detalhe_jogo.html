@@ -2,17 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes do Jogo</title>
+    <title>Detalhes do Treino</title>
 </head>
+
 <body>
-    <h1>{{ jogo.jogo_data }} {{ jogo.jogo_hora }} - {{ jogo.jogo_local }}</h1>
+    <h1>{{ treino.treino_data }} {{ treino.treino_hora }} - {{ treino.treino_local }}</h1>
     <p>Jogadores:</p>
     <ul>
-        {% for jogador in jogo.jogadores.all %}
+        {% for jogador in treino.jogadores.all %}
             <li>{{ jogador.username }}</li>
         {% endfor %}
     </ul>
 
+    <p>Opções de Treino:</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Votar</button>
+    </form>
+
+    <ul>
+        {% for opcao_treino in treino.opcao_treino_set.all %}
+            <li>{{ opcao_treino.opcao_treino }} - {{ opcao_treino.presencas }} presenças</li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>

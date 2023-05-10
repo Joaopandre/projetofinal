@@ -33,8 +33,9 @@
             <li class="nav-left"><a href="{% url 'clube:historia' %}">História do clube</a></li>
             <li class="nav-left"><a href="{% url 'clube:jogos' %}">Jogos</a></li>
             <li class="nav-left"><a href="{% url 'clube:criar_jogo' %}">Criar Jogos</a></li>
-            <li class="nav-left"><a href="{% url 'clube:criar_treino' %}">Criar Treinos</a></li>
             <li class="nav-left"><a href="{% url 'clube:treinos' %}">Treinos</a></li>
+            <li class="nav-left"><a href="{% url 'clube:criar_treino' %}">Criar Treinos</a></li>
+            <li class="nav-right"><a href="{% url 'clube:lista_users' %}">Gerir Users</a></li>
             <li class="nav-right"><a href="{% url 'clube:home' %}">Perfil</a></li>
             <li class="nav-right"><a href="{% url 'clube:fazerlogout' %}">Logout</a></li>
         {% else %}
@@ -56,9 +57,9 @@
 
     {% block conteudo %}
         {% if request.user.is_authenticated %}
-            <h2>O user {{ request.user.username }} está logado</h2>
+            <h2>{{ request.user.username }} está online</h2>
         {% else %}
-            <h2>Não está logado...</h2>
+            <h2>Não está conectado...</h2>
         {% endif %}
     {% endblock %}
 

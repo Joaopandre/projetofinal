@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import CustomUserCreationForm, AtletaForm, TreinadorForm, DiretorForm, JogoForm, TreinoForm
+from django.contrib.auth.models import User
+
+from .forms import CustomUserCreationForm, AtletaForm, TreinadorForm, DiretorForm, JogoForm, TreinoForm, VotoTreinoForm
 from django.core.checks import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import context
 from django.urls import reverse
-from .models import Atleta, Jogo, Treino
+from .models import Atleta, Jogo, Treino, Voto_treino, Opcao_treino
 
 
 def home(request):
@@ -124,11 +126,45 @@ def treinos(request):
     context = {'treinos_criados': treinos_criados}
     return render(request, 'clube/home.html', context)
 
+
+@login_required
+def voto_treino(request, id_treino):
+    treino = get_object_or_404(Treino, id=id_treino)
+
+    if not treino.is_ativo:
+        messages.warning(request, 'Esse treino não está mais ativo.')
+        return redirect('clube:treinos')
+
+    participando = Voto_treino.objects.filter(treino=treino, jogador=request.user).exists()
+
+    if request.method == 'POST':
+        form = VotoTreinoForm(request.POST)
+        if form.is_valid():
+            vai_treinar = form.cleaned_data['vai_treinar']
+            justificacao = form.cleaned_data['justificacao']
+            if not participando:
+                voto = Voto_treino(treino=treino, jogador=request.user, vai_treinar=vai_treinar, justificacao=justificacao)
+                voto.save()
+                messages.success(request, 'Voto registrado com sucesso.')
+            else:
+                messages.warning(request, 'Você já votou neste treino.')
+            return redirect('clube:detalhe_treino', treino_id=id_treino)
+        else:
+            messages.error(request, 'O formulário contém erros. Verifique os campos abaixo.')
+    else:
+        form = VotoTreinoForm()
+
+    return render(request, 'clube/_treino.html', {'treino': treino, 'participando': participando, 'form': form})
+
+
 @login_required
 def detalhe_treino(request, treino_id):
     treino = get_object_or_404(Treino, id=treino_id)
-    context = {'treino': treino}
+    opcoes_treino = Opcao_treino.objects.filter(treino_id=treino.id)
+    participando = Voto_treino.objects.filter(jogador=request.user, treino=treino).exists()
+    context = {'treino': treino, 'opcoes_treino': opcoes_treino, 'participando': participando}
     return render(request, 'clube/detalhe_treino.html', context)
+
 @login_required
 def criar_treino(request):
     if request.method == 'POST':
@@ -142,3 +178,10 @@ def criar_treino(request):
     else:
         form = TreinoForm()
     return render(request, 'clube/criar_treino.html', {'form': form})
+
+
+
+@login_required
+def lista_users(request):
+    users = User.objects.all()
+    return render(request, 'clube/lista_users.html', {'users': users})

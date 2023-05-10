@@ -40,19 +40,18 @@ class Opcao_treino(models.Model):
     opcao_treino = models.CharField(max_length=20)
     presencas = models.IntegerField(default=0)
 
+class Voto_treino(models.Model):
+    jogador = models.ForeignKey(User, on_delete=models.CASCADE)
+    treino = models.ForeignKey(Treino, on_delete=models.CASCADE, null=True)
+    justificacao = models.CharField(max_length=200, blank=True)
+    vai_treinar = models.BooleanField(default=True)
 
 class Jogo(models.Model):
     jogo_data = models.DateField('data')
     jogo_hora = models.TimeField()
     jogo_local = models.CharField(max_length=200)
 
-
-class Voto_jogo(models.Model):
-    jogador = models.ForeignKey(User, on_delete=models.CASCADE)
+class Opcao_jogo(models.Model):
     jogo = models.ForeignKey(Jogo, on_delete=models.CASCADE)
-    vai_jogar = models.BooleanField()
-
-class Voto_treino(models.Model):
-    jogador = models.ForeignKey(User, on_delete=models.CASCADE)
-    jogo = models.ForeignKey(Jogo, on_delete=models.CASCADE)
-    vai_jogar = models.BooleanField()
+    opcao_jogo = models.CharField(max_length=20)
+    presencas = models.IntegerField(default=0)

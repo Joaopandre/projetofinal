@@ -24,4 +24,6 @@ urlpatterns = [
     path('fazerlogin', views.fazerlogin, name='fazerlogin'),
     path('fazerlogout', views.fazerlogout, name='fazerlogout'),
 
+    path('users/', views.lista_users, name='lista_users'),
+
 ]

@@ -1,0 +1,28 @@
+
+{% block content %}
+  <h1>Lista de Todos os Atletas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome de User</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <form action="{% url 'clube:home' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Excluir</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

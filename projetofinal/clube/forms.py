@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Atleta, Jogo, Treino
+from .models import User, Atleta, Jogo, Treino, Voto_treino
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -59,4 +59,13 @@ class TreinoForm(forms.ModelForm):
         widgets = {
             'treino_data': forms.DateInput(attrs={'type': 'date'}),
             'treino_hora': forms.TimeInput(attrs={'type': 'time'}),
+        }
+
+class VotoTreinoForm(forms.ModelForm):
+    class Meta:
+        model = Voto_treino
+        fields = ['vai_treinar', 'justificacao']
+        labels = {
+            'vai_treinar': 'Disponível para o treino?',
+            'justificacao': 'Justificação (caso não disponível)',
         }
