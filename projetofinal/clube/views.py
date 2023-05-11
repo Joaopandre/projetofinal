@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 
-from .forms import CustomUserCreationForm, AtletaForm, TreinadorForm, DiretorForm, JogoForm, TreinoForm, VotoTreinoForm
+from .forms import CustomUserCreationForm, AtletaForm, TreinadorForm, JogoForm, TreinoForm, VotoTreinoForm
 from django.core.checks import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -68,7 +68,6 @@ def registar_atleta(request):
 
 
 
-
 def registar_treinador(request):
     if request.method == 'POST':
         form = TreinadorForm(request.POST)
@@ -79,17 +78,6 @@ def registar_treinador(request):
     else:
         form = TreinadorForm()
     return render(request, 'clube/registar_treinador.html', {'form': form})
-
-def registar_diretor(request):
-    if request.method == 'POST':
-        form = DiretorForm(request.POST)
-        if form.is_valid():
-            diretor = form.save()
-            login(request, diretor)
-            return redirect('clube:home')
-    else:
-        form = DiretorForm()
-    return render(request, 'clube/registar_diretor.html', {'form': form})
 
 def historia(request):
     return render(request, 'clube/historia.html')
@@ -165,19 +153,22 @@ def detalhe_treino(request, treino_id):
     context = {'treino': treino, 'opcoes_treino': opcoes_treino, 'participando': participando}
     return render(request, 'clube/detalhe_treino.html', context)
 
-@login_required
+@login_required(login_url='fazerlogin')
 def criar_treino(request):
-    if request.method == 'POST':
-        form = TreinoForm(request.POST)
-        if form.is_valid():
-            treino = form.save(commit=False)
-            treino.criador = request.user
-            treino.save()
-            form.save_m2m()
-            return redirect('clube:home')
+    if hasattr(request.user, 'treinador'):
+        if request.method == 'POST':
+            form = TreinoForm(request.POST)
+            if form.is_valid():
+                treino = form.save(commit=False)
+                treino.criador = request.user
+                treino.save()
+                form.save_m2m()
+                return redirect('clube:home')
+        else:
+            form = TreinoForm()
+        return render(request, 'clube/criar_treino.html', {'form': form})
     else:
-        form = TreinoForm()
-    return render(request, 'clube/criar_treino.html', {'form': form})
+        redirect('clube:login')
 
 
 

@@ -32,9 +32,11 @@
         {% if request.user.is_authenticated %}
             <li class="nav-left"><a href="{% url 'clube:historia' %}">História do clube</a></li>
             <li class="nav-left"><a href="{% url 'clube:jogos' %}">Jogos</a></li>
-            <li class="nav-left"><a href="{% url 'clube:criar_jogo' %}">Criar Jogos</a></li>
             <li class="nav-left"><a href="{% url 'clube:treinos' %}">Treinos</a></li>
-            <li class="nav-left"><a href="{% url 'clube:criar_treino' %}">Criar Treinos</a></li>
+            {% if request.user.treinador %}
+                <li class="nav-left"><a href="{% url 'clube:criar_treino' %}">Criar Treinos</a></li>
+                <li class="nav-left"><a href="{% url 'clube:criar_jogo' %}">Criar Jogos</a></li>
+            {% endif %}
             <li class="nav-right"><a href="{% url 'clube:lista_users' %}">Gerir Users</a></li>
             <li class="nav-right"><a href="{% url 'clube:home' %}">Perfil</a></li>
             <li class="nav-right"><a href="{% url 'clube:fazerlogout' %}">Logout</a></li>
@@ -46,8 +48,10 @@
                         class="fa fa-caret-down"></i></a></li>
                 <div class="dropdown-content">
                     <a href="{% url 'clube:registar_atleta' %}">Atletas</a>
-                    <a href="{% url 'clube:registar_treinador' %}">Treinadores</a>
-                    <a href="{% url 'clube:registar_diretor' %}">Diretor</a>
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'clube:registar_treinador' %}">Treinadores</a>
+                        <a href="{% url 'clube:registar_diretor' %}">Diretor</a>
+                    {% endif %}
                 </div>
             </div>
 

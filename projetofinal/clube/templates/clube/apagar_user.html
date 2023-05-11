@@ -1,0 +1,11 @@
+
+{% block content %}
+
+<h1>Excluir usuário {{ user.username }}</h1>
+<p>Tem certeza que deseja excluir o usuário "{{ user.username }}"?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Excluir</button>
+  <a href="{% url 'clube:lista_users' %}">Listar todos os atletas</a>
+</form>
+{% endblock %}

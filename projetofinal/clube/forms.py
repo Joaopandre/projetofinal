@@ -36,13 +36,6 @@ class TreinadorForm(forms.ModelForm):
         model = User
         fields = UserCreationForm.Meta.fields + ('email', 'equipa', 'num_tele')
 
-class DiretorForm(forms.ModelForm):
-    num_tele = forms.CharField(max_length=20, required=True)
-    class Meta:
-        model = User
-        fields = UserCreationForm.Meta.fields + ('num_tele',)
-
-
 class JogoForm(forms.ModelForm):
     class Meta:
         model = Jogo

@@ -16,17 +16,12 @@ class Atleta(models.Model):
     data_nascimento = models.DateField()
     sexo = models.CharField(max_length=10)
 
-
     def __str__(self):
         return self.user.username
 
 class Treinador(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     equipa = models.CharField(max_length=50)
-    num_tel = models.IntegerField(unique=True)
-
-class Diretor(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     num_tel = models.IntegerField(unique=True)
 
 
